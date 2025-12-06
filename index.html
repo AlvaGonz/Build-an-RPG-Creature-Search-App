@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPG Creature Search App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=MedievalSharp&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Toggle button for favorites sidebar -->
+  <button id="sidebar-toggle-btn" class="sidebar-toggle-btn">⭐</button>
+
+  <div class="container">
+    <header>
+      <h1>🔮 RPG Creature Search</h1>
+      <p class="subtitle">Discover the powers and stats of mythical creatures</p>
+    </header>
+
+    <div class="search-section">
+      <div class="input-group">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Enter creature name or ID (e.g., Pyrolynx or 1)"
+          required
+          aria-label="Search for creature by name or ID"
+        >
+        <button id="search-button" aria-label="Search">Search</button>
+      </div>
+    </div>
+
+    <div id="results" class="results hidden">
+      <div class="creature-card">
+        <div class="creature-header">
+          <div class="creature-visual">
+            <svg id="creature-svg" class="lowpoly-svg" viewBox="0 0 200 200">
+              <!-- SVG Low Poly creature will be drawn here -->
+            </svg>
+          </div>
+          <div class="creature-title">
+            <h2 id="creature-name">-</h2>
+            <span id="creature-id" class="creature-id">-</span>
+          </div>
+        </div>
+        <div class="creature-actions">
+          <button id="favorite-btn" class="action-btn" title="Add to Favorites">
+            <span class="heart-icon">🤍</span> Favorite
+          </button>
+          <button id="compare-btn" class="action-btn" title="Add to Comparison">
+            ⚖️ Compare
+          </button>
+        </div>
+
+        <div class="creature-stats">
+          <div class="stat-row">
+            <div class="stat-item">
+              <span class="stat-label">Weight:</span>
+              <span id="weight" class="stat-value">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Height:</span>
+              <span id="height" class="stat-value">-</span>
+            </div>
+          </div>
+
+          <div class="types-section">
+            <span class="stat-label">Types:</span>
+            <div id="types" class="types-container">
+              <!-- Types will be added here dynamically -->
+            </div>
+          </div>
+
+          <div class="combat-stats">
+            <h3 class="section-title">Combat Stats</h3>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <span class="stat-icon">❤️</span>
+                <span class="stat-name">HP</span>
+                <span id="hp" class="stat-number">-</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-icon">⚔️</span>
+                <span class="stat-name">Attack</span>
+                <span id="attack" class="stat-number">-</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-icon">🛡️</span>
+                <span class="stat-name">Defense</span>
+                <span id="defense" class="stat-number">-</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-icon">🔥</span>
+                <span class="stat-name">Special Attack</span>
+                <span id="special-attack" class="stat-number">-</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-icon">✨</span>
+                <span class="stat-name">Special Defense</span>
+                <span id="special-defense" class="stat-number">-</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-icon">💨</span>
+                <span class="stat-name">Speed</span>
+                <span id="speed" class="stat-number">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Canvas for particle effects -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Modal for Comparison -->
+  <div id="comparison-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>⚔️ Creature Comparison</h2>
+      <div id="comparison-container" class="comparison-grid">
+        <!-- Comparison creatures will be displayed here -->
+      </div>
+      <button id="clear-comparison" class="clear-btn">Clear All</button>
+    </div>
+  </div>
+
+  <!-- Favorites Sidebar -->
+  <div id="favorites-sidebar" class="favorites-sidebar collapsed">
+    <div class="sidebar-header">
+      <h3>⭐ Favorites</h3>
+      <button id="toggle-favorites" class="toggle-btn">▲</button>
+    </div>
+    <div id="favorites-list" class="favorites-list">
+      <!-- Favorites will be listed here -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
